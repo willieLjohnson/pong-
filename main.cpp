@@ -29,6 +29,14 @@ int main() {
             SDL_SetRenderDrawColor(renderer, 0x0, 0x0, 0x0, 0xFF);
             SDL_RenderClear(renderer);
 
+            SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+
+            for (int y = 0; y < WINDOW_HEIGHT; y++) {
+                if (y % 5) {
+                    SDL_RenderDrawPoint(renderer, WINDOW_WIDTH / 2, y);
+                }
+            }
+
             SDL_RenderPresent(renderer);
         }
     }
