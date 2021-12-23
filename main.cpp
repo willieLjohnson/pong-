@@ -52,7 +52,7 @@ class Ball {
         }
 
         Vec2 position;
-        SDL_Rect rect{};
+        SDL_Rect rect;
 };
 
 int main() {
@@ -62,6 +62,8 @@ int main() {
     SDL_Window* window = SDL_CreateWindow("Pong", 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
 
+    Ball ball(Vec2((WINDOW_WIDTH / 2.0f) - (BALL_WIDTH / 2.0f),
+	(WINDOW_HEIGHT / 2.0f) - (BALL_WIDTH / 2.0f)));
     // Logic
     {
         bool running = true;
@@ -88,6 +90,8 @@ int main() {
                     SDL_RenderDrawPoint(renderer, WINDOW_WIDTH / 2, y);
                 }
             }
+
+            ball.Draw(renderer);
 
             SDL_RenderPresent(renderer);
         }
